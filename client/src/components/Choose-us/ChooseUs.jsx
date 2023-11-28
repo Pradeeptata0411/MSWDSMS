@@ -1,0 +1,60 @@
+import React, { useState } from "react";
+import { Container, Row, Col } from "reactstrap";
+import Newsletter from "../Newsletter/Newsletter";
+import chooseImg from "../../assests/images/why-choose-us.png";
+import "./choose-us.css";
+import ReactPlayer from "react-player";
+import Header from "../Header/Header";
+import Courses from "../Courses-section/Courses";
+const ChooseUs = () => {
+  const [showVideo, setShowVideo] = useState(false);
+  return (
+    <section>
+       
+        <br/><br/>
+      <Container>
+        <Row>
+          <Col lg="6" md="6">
+            <div className="choose__content">
+              <h2>Why Choose Us</h2>
+              <p>
+              Educational services can be explained as the training or instructions given on different subjects. Institutions giving these services on different subjects can be training and coaching centers, colleges, schools, and universities.
+              </p>
+              <p>
+              It helps learners acquire and develop know-how needed for a skilled occupation and is essential for occupational mobility, improvement of professional qualifications, and updating of knowledge, skills, and understanding.
+              </p>
+            </div>
+          </Col>
+
+          <Col lg="6" md="6">
+            <div className="choose__img">
+              {showVideo ? (
+                <ReactPlayer
+                  url="https://www.youtube.com/watch?v=L9AXsV3eulI"
+                  controls
+                  width="100%"
+                  height="350px"
+                />
+              ) : (
+                <img src={chooseImg} alt="" className="w-100" />
+              )}
+
+              {!showVideo && (
+                <span className="play__icon">
+                  <i
+                    class="ri-play-circle-line"
+                    onClick={() => setShowVideo(!showVideo)}
+                  ></i>
+                </span>
+              )}
+            </div>
+          </Col>
+        </Row>
+      </Container>
+      <br/><br/>
+      <Courses/>
+    </section>
+  );
+};
+
+export default ChooseUs;
